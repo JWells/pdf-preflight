@@ -26,7 +26,7 @@ module Preflight
         info = ohash.object(ohash.trailer[:Info])
         @matches.each do |key, regexp|
           if !info.has_key?(key)
-            array << Issue.new("Info dict missing required key", self, :key => key)
+            array << Issue.new("Info dict missing required key #{key}", self, :key => key)
           elsif !info[key].to_s.match(regexp)
             array << Issue.new("value of Info entry #{key} doesn't match #{regexp}", self, :key    => key,
                                                                                            :regexp => regexp)
